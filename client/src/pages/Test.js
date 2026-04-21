@@ -6,7 +6,7 @@ const Test = () => {
     const [selected, setSelected] = useState("");
     const [result, setResult] = useState("");
     const [loading, setLoading] = useState(false);
-    
+
     // Load stats from localStorage or default
     const [stats, setStats] = useState(() => {
         const saved = localStorage.getItem("englishCoachStats");
@@ -22,10 +22,10 @@ const Test = () => {
             setResult("");
             setSelected("");
             setError(null);
-            
-            const res = await axios.post("http://localhost:5000/generate-question");
+
+            const res = await axios.post("https://smart-memory.onrender.com/generate-question");
             setQuestion(res.data);
-            
+
         } catch (err) {
             console.error("FRONTEND ERROR:", err);
             if (err.response && err.response.data && err.response.data.error) {
@@ -59,13 +59,13 @@ const Test = () => {
     return (
         <div className="app-container">
             <main className="main-content animate-fade-in" style={{ maxWidth: "800px" }}>
-                
+
                 <div className="flex justify-between items-center mb-8">
                     <div>
                         <h1 className="text-gradient">AI Practice Tests</h1>
                         <p style={{ margin: 0 }}>Generate infinite dynamic questions to test your skills.</p>
                     </div>
-                    
+
                     <div className="glass-panel" style={{ padding: "0.5rem 1rem", display: "flex", gap: "1rem" }}>
                         <div style={{ textAlign: "center" }}>
                             <div style={{ color: "var(--success)", fontWeight: "bold", fontSize: "1.2rem" }}>{stats.correct}</div>
@@ -103,13 +103,13 @@ const Test = () => {
 
                     {loading && (
                         <div className="animate-fade-in py-8">
-                            <div style={{ 
-                                width: "40px", height: "40px", 
-                                border: "3px solid rgba(99, 102, 241, 0.2)", 
-                                borderTop: "3px solid var(--primary)", 
-                                borderRadius: "50%", 
+                            <div style={{
+                                width: "40px", height: "40px",
+                                border: "3px solid rgba(99, 102, 241, 0.2)",
+                                borderTop: "3px solid var(--primary)",
+                                borderRadius: "50%",
                                 margin: "0 auto 1.5rem auto",
-                                animation: "spin 1s linear infinite" 
+                                animation: "spin 1s linear infinite"
                             }}></div>
                             <h3>Crafting a dynamic test for you...</h3>
                             <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
@@ -139,7 +139,7 @@ const Test = () => {
                                         alignItems: "center",
                                         gap: "1rem"
                                     };
-                                    
+
                                     // Status colors after check
                                     if (result && opt === question.answer) {
                                         btnStyle.background = "rgba(16, 185, 129, 0.15)";
@@ -156,8 +156,8 @@ const Test = () => {
                                             style={btnStyle}
                                             disabled={!!result}
                                         >
-                                            <span style={{ 
-                                                width: "24px", height: "24px", borderRadius: "50%", 
+                                            <span style={{
+                                                width: "24px", height: "24px", borderRadius: "50%",
                                                 border: `1px solid ${isSelected ? "var(--primary)" : "var(--border)"}`,
                                                 display: "inline-flex", alignItems: "center", justifyContent: "center",
                                                 fontSize: "0.7rem", fontWeight: "bold",
@@ -173,15 +173,15 @@ const Test = () => {
 
                             {!result ? (
                                 <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-                                    <button 
-                                        className="btn btn-secondary" 
+                                    <button
+                                        className="btn btn-secondary"
                                         onClick={generateQuestion}
                                     >
                                         Skip Question
                                     </button>
-                                    <button 
-                                        className="btn btn-primary" 
-                                        onClick={checkAnswer} 
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={checkAnswer}
                                         disabled={!selected}
                                         style={{ padding: "0.75rem 2rem" }}
                                     >
@@ -190,9 +190,9 @@ const Test = () => {
                                 </div>
                             ) : (
                                 <div className="animate-fade-in" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                                    <div style={{ 
-                                        padding: "1.5rem", 
-                                        borderRadius: "12px", 
+                                    <div style={{
+                                        padding: "1.5rem",
+                                        borderRadius: "12px",
                                         background: result === "correct" ? "rgba(16, 185, 129, 0.1)" : "rgba(239, 68, 68, 0.1)",
                                         border: `1px solid ${result === "correct" ? "var(--success)" : "var(--error)"}`,
                                         display: "flex", justifyContent: "space-between", alignItems: "center"
@@ -211,13 +211,13 @@ const Test = () => {
                                             Next Question →
                                         </button>
                                     </div>
-                                    
+
                                     {question.explanation && (
-                                        <div style={{ 
-                                            background: "rgba(255,255,255,0.05)", 
-                                            padding: "1.5rem", 
-                                            borderRadius: "12px", 
-                                            borderLeft: "4px solid var(--primary)" 
+                                        <div style={{
+                                            background: "rgba(255,255,255,0.05)",
+                                            padding: "1.5rem",
+                                            borderRadius: "12px",
+                                            borderLeft: "4px solid var(--primary)"
                                         }}>
                                             <h4 style={{ color: "var(--primary)", marginTop: 0, marginBottom: "0.5rem" }}>💡 Explanation</h4>
                                             <p style={{ margin: 0, lineHeight: 1.6, color: "var(--text-main)" }}>{question.explanation}</p>
