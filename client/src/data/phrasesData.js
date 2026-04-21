@@ -1,0 +1,213 @@
+export const getPhraseCategories = () => {
+    
+    // Format: Phrase | Meaning | Formality | Literal/Origin | Example
+    const beginnerStems = [
+        "How are you?|Asking about someone's well-being.|Universal|What is your state?|Hey, how are you today?",
+        "What's up?|A casual greeting asking what is happening.|Casual|What is above?|Hey man, what's up?",
+        "See you later|A standard parting phrase.|Casual|I will observe you later.|I'm heading home, see you later!",
+        "Take care|A warm way to say goodbye.|Universal|Protect yourself.|It was nice meeting you, take care.",
+        "Excuse me|Used to politely get attention or apologize.|Formal|Remove my blame.|Excuse me, where is the restroom?",
+        "I'm sorry|A direct apology.|Universal|I am sorrowful.|I'm sorry for being late.",
+        "Thank you|Expressing gratitude.|Universal|I give thanks to you.|Thank you for the gift.",
+        "No problem|A casual response to a thank you.|Casual|There is no issue.|Thanks for the help! No problem.",
+        "You're welcome|A polite response to a thank you.|Universal|You are received gladly.|Thanks! You're welcome.",
+        "Have a good one|Wishing someone a good day/evening.|Casual|Have a good entity.|Leaving the shop: Have a good one!",
+        "Nice to meet you|Greeting someone for the first time.|Universal|It is pleasant to encounter you.|Hi, I'm Sarah. Nice to meet you.",
+        "How much is this?|Asking for a price.|Universal|What quantity of money?|Excuse me, how much is this shirt?",
+        "Can you help me?|Requesting assistance.|Universal|Are you able to aid me?|I'm lost, can you help me?",
+        "I don't understand|Expressing confusion.|Universal|I do not grasp it.|Sorry, I don't understand what you said.",
+        "Could you repeat that?|Asking someone to say something again.|Formal|Say it again.|The connection is bad, could you repeat that?",
+        "What do you mean?|Asking for clarification.|Casual|What is your intention?|I'm confused, what do you mean?",
+        "Let's go|Encouraging moving or starting.|Casual|Allow us to depart.|The movie is starting, let's go!",
+        "I agree|Expressing alignment with a statement.|Universal|I am in harmony.|That's a great idea, I agree.",
+        "I disagree|Expressing opposition to a statement.|Universal|I am not in harmony.|Actually, I disagree with that rule.",
+        "Sounds good|Approving of a plan or idea.|Casual|It resonates positively.|See you at 8pm? Sounds good.",
+        "I'm hungry|Stating lack of food.|Universal|I possess hunger.|It's noon, I'm hungry.",
+        "I'm thirsty|Stating need for liquid.|Universal|I possess thirst.|After that run, I'm thirsty.",
+        "What time is it?|Asking for the current hour.|Universal|Which hour exists?|My watch broke, what time is it?",
+        "Where is the restroom?|Asking for the bathroom.|Universal|Where is the resting room?|Excuse me, where is the restroom?",
+        "I'm tired|Expressing fatigue.|Universal|I possess exhaustion.|It's been a long day, I'm tired.",
+        "Good morning|Greeting before noon.|Universal|Pleasant early day.|Walking into work: Good morning!",
+        "Good night|Saying goodbye late at night or before sleep.|Universal|Pleasant dark hours.|Heading to bed, good night.",
+        "How is your family?|Checking on someone's relatives.|Universal|Status of your relatives?|Long time no see! How is your family?",
+        "I love it|Expressing strong positive emotion toward a thing.|Casual|I possess love for it.|This cake is amazing, I love it.",
+        "I hate it|Expressing strong negative emotion toward a thing.|Casual|I possess hatred for it.|This weather is awful, I hate it.",
+        "Can I have the bill?|Asking to pay at a restaurant.|Universal|May I possess the invoice?|We're ready to leave, can I have the bill?",
+        "I'm lost|Stating you don't know your location.|Universal|I am missing.|Excuse me, I'm lost. Where is Main Street?",
+        "It's beautiful|Describing something visually pleasing.|Universal|It possesses beauty.|Look at that sunset, it's beautiful.",
+        "It's too expensive|Stating a high price.|Universal|It costs excessive funds.|I can't buy this car, it's too expensive.",
+        "I need a doctor|Medical emergency phrase.|Universal|I require medical aid.|Please call for help, I need a doctor.",
+        "Call the police|Security emergency phrase.|Universal|Summon law enforcement.|Someone broke in, call the police!",
+        "Wait a minute|Asking someone to pause briefly.|Casual|Pause for sixty seconds.|Wait a minute, I forgot my keys.",
+        "Hurry up|Telling someone to move faster.|Casual|Move with speed.|The bus is leaving, hurry up!",
+        "Be careful|Warning someone of danger.|Universal|Possess caution.|The floor is wet, be careful.",
+        "Don't worry|Reassuring someone.|Universal|Cease anxiety.|You'll pass the test, don't worry.",
+        "I'm joking|Indicating you are not serious.|Casual|I am telling a joke.|I didn't actually eat your food, I'm joking.",
+        "Are you sure?|Confirming someone's certainty.|Universal|Do you possess certainty?|I'm giving you my ticket. Are you sure?",
+        "Of course|A strong confirmation.|Universal|Naturally so.|Can you help me? Of course.",
+        "Maybe|Indicating uncertainty.|Universal|It may exist.|Are you coming tonight? Maybe.",
+        "Yes, please|Accepting an offer politely.|Universal|Affirmative, if it pleases you.|Would you like water? Yes, please.",
+        "No, thank you|Declining an offer politely.|Universal|Negative, but gratitude.|More cake? No, thank you.",
+        "What is your name?|Asking for identity.|Universal|Which title do you hold?|Hi there, what is your name?",
+        "Where are you from?|Asking for origin/nationality.|Universal|Which place birthed you?|Your accent is lovely, where are you from?",
+        "I live in...|Stating your residence.|Universal|I reside within...|Nice to meet you, I live in New York.",
+        "It doesn't matter|Saying something is unimportant.|Universal|It has no physical mass/importance.|Which movie should we watch? It doesn't matter."
+    ];
+
+    const intermediateStems = [
+        "By the way|Used to introduce a new, slightly related topic.|Casual|Beside the main road.|By the way, did you see the email?",
+        "Make up your mind|To finally make a decision.|Casual|Construct your brain.|We've been looking at the menu for an hour, make up your mind!",
+        "Take your time|There is no rush.|Universal|Utilize your own clock.|No need to hurry, take your time.",
+        "To be honest|Used to preface a truthful, sometimes harsh opinion.|Universal|To exist truthfully.|To be honest, I didn't like the movie.",
+        "Never mind|Telling someone to disregard what was just said.|Casual|Do not give it mental attention.|Did you hear that? Actually, never mind.",
+        "So far, so good|Progress has been satisfactory up to this point.|Universal|Until this distance, it is positive.|How is the new job? So far, so good.",
+        "It's up to you|Placing the decision on the other person.|Universal|It elevates to your level.|Where should we eat? It's up to you.",
+        "I couldn't care less|Expressing absolute zero interest.|Casual|It's physically impossible to care lower.|She was mad at me, but I couldn't care less.",
+        "Fingers crossed|Hoping for good luck.|Casual|Crossing fingers was an old superstition to ward off evil.|I have my interview tomorrow, fingers crossed!",
+        "Bear with me|Please be patient with me while I deal with a delay.|Formal|Carry the burden patiently with me.|My computer is slow today, please bear with me.",
+        "Get along with|To have a good, friendly relationship with someone.|Universal|Move forward together smoothly.|I really get along with my new coworkers.",
+        "Look forward to|To be excited and eagerly awaiting something in the future.|Formal|Gazing ahead at.|I look forward to seeing you next week.",
+        "Figure out|To solve a problem or discover the answer.|Universal|Calculate the shape.|I need to figure out how this machine works.",
+        "Give up|To surrender or quit trying.|Universal|Hand over upwards.|The math puzzle was too hard, so I gave up.",
+        "Find out|To discover information or a fact.|Universal|Locate externally.|I need to find out what time the flight leaves.",
+        "Show up|To arrive or appear, especially unexpectedly or late.|Casual|Display oneself upwards.|He didn't show up to the party until midnight.",
+        "Turn out|To yield a specific result or end in a certain way.|Universal|Rotate outwards.|The weather looked bad, but it turned out to be a sunny day.",
+        "Hang out|To spend time relaxing together casually.|Casual|Suspend outdoors.|Do you want to hang out at the mall later?",
+        "Catch up|To talk to someone you haven't seen in a while and share news.|Casual|Grab upwards to reach the same level.|Let's get coffee and catch up soon.",
+        "Put off|To delay or postpone an action.|Universal|Place away.|I keep putting off doing my laundry.",
+        "Call off|To cancel an event or agreement.|Universal|Yell it away.|The boss had to call off the meeting.",
+        "Look into|To investigate or heavily research something.|Formal|Gaze inside it.|I will look into the error and email you back.",
+        "Point out|To draw attention to a specific fact or detail.|Formal|Direct a finger outwards.|I'd like to point out that our sales have increased.",
+        "Hold on|To wait for a short time.|Universal|Grip tightly.|Hold on a second, I need to tie my shoe.",
+        "Go on|To continue an action or speech.|Universal|Move forward.|Please go on, I am listening.",
+        "Take on|To accept a responsibility or challenge.|Formal|Grab firmly.|I decided to take on the extra project.",
+        "Bring up|To mention a topic in conversation.|Universal|Carry upwards to view.|Why did you bring up politics at dinner?",
+        "Look up|To search for specific data in a book or online.|Universal|Gaze skyward.|If you don't know the word, look it up in a dictionary.",
+        "Give in|To finally surrender to pressure or a request after resisting.|Universal|Hand inwards.|The child cried until the mother gave in and bought the toy.",
+        "Run out|To completely use up a supply of something.|Universal|Sprint externally.|We need to go to the store, we've run out of milk.",
+        "Take off|When an airplane leaves the ground, or quickly leaving a place.|Universal|Remove from the surface.|My flight takes off at 6 AM.",
+        "Work out|To exercise, or for a situation to resolve successfully.|Universal|Labor externally.|Don't worry, everything will work out in the end.",
+        "Drop by|To visit for a short time, usually casually and unannounced.|Casual|Fall near.|Feel free to drop by my house later.",
+        "Pass out|To lose consciousness or faint.|Universal|Go beyond the exit.|It was so hot in the room she almost passed out.",
+        "Break down|When a machine stops working, or someone loses emotional control.|Universal|Shatter downward.|My car broke down on the highway.",
+        "Fall apart|To break into pieces, or an organization failing completely.|Universal|Drop into separate chunks.|Their marriage started to fall apart.",
+        "Stand out|To be very noticeable or clearly better than others in a group.|Universal|Stand outside the circle.|Her red dress really stood out in the crowd.",
+        "Fill out|To complete a form or document by writing details.|Formal|Pour ink entirely.|Please fill out this application form.",
+        "Think over|To carefully consider a proposal or decision before acting.|Formal|Process mentally above the object.|Give me a few days to think over your job offer.",
+        "Keep up|To maintain the same pace or level as others.|Universal|Retain in a high position.|The class moves fast, it's hard to keep up.",
+        "Look after|To take care of someone or something.|Universal|Gaze behind them.|Can you look after my dog while I am on vacation?",
+        "Make sense|To be logical or understandable.|Universal|Construct logic.|Your explanation doesn't make any sense to me.",
+        "Take advantage of|To use a situation heavily for your own benefit.|Formal|Grab superiority.|We should take advantage of the sale.",
+        "In terms of|Regarding or concerning a specific aspect.|Formal|Within the boundaries of.|In terms of money, it's a bad deal.",
+        "On the other hand|To present an opposite or contrasting fact/viewpoint.|Formal|Looking at the opposite palm.|It's expensive, but on the other hand, it is high quality.",
+        "As a matter of fact|Used to emphasize that a fact is true, often contrary to expectation.|Formal|Existing as physical truth.|I'm not poor; as a matter of fact, I'm quite wealthy.",
+        "For the time being|Temporarily, until a better situation arrives.|Formal|During the current ticking seconds.|We'll share a desk for the time being.",
+        "At the end of the day|Ultimately, when all is considered.|Universal|When the sun sets on the issue.|At the end of the day, family is what matters.",
+        "Behind someone's back|To do something secretly or deceitfully without their knowledge.|Casual|Standing where their eyes cannot see.|She insulted me behind my back.",
+        "In the long run|Looking at the distant, ultimate future results.|Universal|During the extended marathon.|It hurts now, but it'll be good for you in the long run."
+    ];
+
+    const advancedStems = [
+        "Beat around the bush|To totally avoid saying what you mean, usually because it is uncomfortable.|Advanced Casual|Hitting the ground near a plant instead of pulling the plant.|Stop beating around the bush and tell me the bad news.",
+        "Call it a day|To officially stop working on something for the rest of the day.|Professional|Labeling the current time as 'the day' being completely over.|We've been coding for 10 hours, let's call it a day.",
+        "Cut corners|To do something poorly or cheaply to save time and money.|Professional|Literally cutting off the physical corners of a building to save bricks.|If we cut corners on safety, someone will get hurt.",
+        "Get out of hand|When a situation loses control completely and quickly.|Universal|Slipping out of your physical physical grip.|The office party got completely out of hand.",
+        "Wrap your head around|To fully comprehend a highly complex or strange concept.|Universal|Physically bending your brain to encompass a physical object.|I just can't wrap my head around quantum physics.",
+        "Blessing in disguise|A terrible event that actually results in a brilliantly good outcome later.|Universal|A holy gift wearing a negative mask.|Losing that job was a blessing in disguise; I found a better one.",
+        "Bite the bullet|To voluntarily endure a painful but completely necessary situation.|Advanced|Biting a lead bullet during surgery before anesthesia was invented.|I hate the dentist, but I have to bite the bullet and go.",
+        "Under the weather|Feeling noticeably ill or deeply exhausted.|Universal|Sailors going below deck to avoid stormy skies when seasick.|I can't go out tonight, I'm feeling under the weather.",
+        "Break the ice|To initiate social conversation in a cold or awkward setting.|Professional|Ships physically smashing frozen water to clear a path for others.|He told a joke to break the ice at the meeting.",
+        "Cost an arm and a leg|To be exceptionally, prohibitively expensive.|Universal|Sacrificing literal limbs to pay for it.|I want that car, but it costs an arm and a leg.",
+        "Let the cat out of the bag|To accidentally reveal a completely hidden secret.|Casual|Failing to hide a stolen cat in a sack at a market.|We were planning a surprise party, but John let the cat out of the bag.",
+        "Play devil's advocate|To argue the opposite side of an issue merely to test the strength of the original argument.|Professional|The Catholic official tasked with arguing against a candidate's saintliness.|I agree with you, but let me play devil's advocate for a moment.",
+        "Sit on the fence|To continually refuse to make a decision or take a side in an argument.|Professional|Straddling a barrier instead of entering somebody's yard.|You can't sit on the fence forever, pick a candidate.",
+        "Through thick and thin|To remain fiercely loyal through both fantastic times and terrible times.|Universal|Walking through dense forests and clear paths alike.|She stood by her brother through thick and thin.",
+        "Once in a blue moon|Something that genuinely happens extremely rarely.|Universal|The ultra-rare occurrence of two full moons in a single calendar month.|I only eat fast food once in a blue moon.",
+        "Take it with a grain of salt|To view a statement with skepticism and not entirely believe it.|Formal|An ancient Roman recipe regarding poison immunity requiring a pinch of salt.|He tends to exaggerate, so take his stories with a grain of salt.",
+        "Burn bridges|To completely and permanently destroy relationships or options.|Professional|Destroying the physical path back to safety after crossing water.|Don't insult your boss when you quit; you shouldn't burn bridges.",
+        "Elephant in the room|An enormous, obvious problem that absolutely everyone is intentionally ignoring.|Professional|A massive beast sitting indoors that nobody wants to acknowledge.|We need to discuss the elephant in the room: the company is bankrupt.",
+        "Spill the beans|To intentionally confess or reveal secret information.|Casual|Knocking over a bowl of voting beans in ancient Greece, ruining the secret ballot.|Come on, spill the beans! Who are you dating?",
+        "Steal someone's thunder|To brutally take credit for someone else's idea, or steal their spotlight.|Professional|A playwright whose physical thunder-sound-machine was stolen by a rival theater.|I announced my engagement, and she stole my thunder by announcing her pregnancy.",
+        "Barking up the wrong tree|To pursue a totally false lead or wildly accuse the wrong person.|Casual|Hunting dogs yelling at a tree the raccoon has long escaped from.|If you think I stole the money, you're barking up the wrong tree.",
+        "Bite off more than you can chew|To arrogantly take on a massive responsibility you cannot physically handle.|Universal|Stuffing too much food in your mouth so you cannot breathe.|I took 6 advanced classes and totally bit off more than I could chew.",
+        "Hit the nail on the head|To state the absolute perfect, exact truth about a situation.|Universal|Swinging a hammer perfectly straight down.|When you said management was the problem, you hit the nail on the head.",
+        "Piece of cake|A task that requires virtually zero effort and is incredibly easy.|Casual|Winning a physical cake in an easy competition.|That math exam was a piece of cake.",
+        "See eye to eye|To completely agree on a topic or viewpoint.|Professional|Two people looking directly into each other's vision without looking away.|My father and I definitely do not see eye to eye on politics.",
+        "Hear it on the grapevine|To learn information tightly passed through informal rumors or gossip.|Casual|Information traveling through interconnected, tangled plant vines.|I heard on the grapevine that Sarah is quitting.",
+        "Jump on the bandwagon|To rapidly join a trend or support a winner only after it becomes highly popular.|Universal|Politicians literally riding a circus wagon in a parade once a crowd formed.|I didn't like that sports team until they won, I just jumped on the bandwagon.",
+        "Kick the bucket|An extremely informal, almost humorous phrase meaning to die.|Casual|Suicide by standing on a pail and intentionally kicking it away.|The old engine finally kicked the bucket yesterday.",
+        "Let sleeping dogs lie|To intentionally avoid interfering in an old conflict so you do not spark new trouble.|Professional|Poking a vicious resting dog will result in a bite.|Don't bring up the argument from 5 years ago, let sleeping dogs lie.",
+        "Miss the boat|To completely lose an opportunity by being fatally too late or hesitant.|Professional|Watching your physical ship sail away from the dock while you stand there.|If you don't invest now, you're going to miss the boat.",
+        "On the ball|To be hyper-alert, highly competent, and totally aware of rapid changes.|Professional|An athlete keeping their strict visual focus directly on the sports ball.|You caught that accounting error quickly, you're really on the ball today.",
+        "Pull someone's leg|To playfully and jokingly deceive someone with a lie.|Casual|Thieves tripping someone on the street to rob them, now means friendly tripping.|I'm not really firing you, I was just pulling your leg!",
+        "Rule of thumb|A broad, universally applied guideline based on practical experience, not strict math.|Universal|Carpenters using the physical width of their thumb to measure wood roughly.|As a rule of thumb, you should save 20% of your income.",
+        "A dime a dozen|Something that is incredibly common and therefore completely worthless value-wise.|Universal|Costing only 10 cents for an entire batch of 12 items.|Those cheap sunglasses are a dime a dozen.",
+        "Add insult to injury|To brutally double down on a bad situation, worsening it permanently.|Formal|Stabbing someone, then verbally mocking them while they bleed.|First my car broke down, and to add insult to injury, it started pouring rain.",
+        "Every cloud has a silver lining|No matter how bleak and terrible a situation is, a massive benefit exists within it.|Universal|Dark storm clouds literally glowing silver on the edges from the hidden sun behind them.|I lost my job, but it forced me to start my own business—every cloud has a silver lining.",
+        "Hit the sack|To go directly to bed to sleep heavily.|Casual|A mattress was historically an empty sack filled with heavy hay.|It's been an exhausting 14-hour shift, I'm going to hit the sack.",
+        "Ignorance is bliss|Failing to know the brutal truth allows you to remain totally, peacefully happy.|Formal|If you do not know the danger exists, you cannot fear it.|I didn't want to know how hot dogs were made; ignorance is bliss.",
+        "Look before you leap|To heavily calculate all risks before making a massive, unchangeable decision.|Universal|Checking the bottom of a dark cliff before jumping off.|Don't invest all your savings in one stock without research; look before you leap.",
+        "No pain, no gain|You cannot achieve massive rewards without suffering directly for them first.|Universal|Muscles must literally tear and burn before they grow back stronger.|My legs are sore from the gym, but no pain, no gain.",
+        "Out of the blue|When something shockingly massive occurs with absolutely zero prior warning.|Casual|A devastating lightning strike coming from a totally clear, cloudless blue sky.|She quit her job completely out of the blue.",
+        "Put all your eggs in one basket|To dangerously risk your entire life's work or fortune on a single, fragile venture.|Professional|Dropping the single basket means 100% destruction of your food supply.|Diversify your investments; don't put all your eggs in one basket.",
+        "Cut to the chase|To brutally abandon pointless small-talk and get directly to the absolute main point.|Professional|Silent movies cutting away from boring romance directly to the explosive car chase.|We only have 5 minutes left, so let's cut to the chase.",
+        "Get a taste of your own medicine|To forcefully suffer the exact same mistreatment from others that you dish out to them.|Universal|A crooked doctor being forced to drink his own poisonous fake cure.|The bully finally got a taste of his own medicine when the team ignored him.",
+        "Give someone the cold shoulder|To intentionally, rudely ignore someone to show severe absolute contempt.|Universal|Serving an unwanted houseguest a nasty slice of cold meat instead of a hot meal.|I said hello to her, but she just gave me the cold shoulder.",
+        "Go on a wild goose chase|To entirely waste resources pursuing a hopelessly impossible or fake goal.|Formal|Trying to catch a fast, aggressive goose on foot across an open field.|My boss sent me on a wild goose chase looking for a file that didn't exist.",
+        "Leave no stone unturned|To intensely search absolutely everywhere, exhausting every extreme possibility.|Professional|Flipping over literally every rock in a massive field to find a single coin.|The police promised to leave no stone unturned to find the missing child.",
+        "Make a long story short|To summarize an incredibly complex timeline into one simple final conclusion.|Universal|Truncating hours of explanation into a quick 5-second burst.|Make a long story short: we got lost, the car died, and we walked home.",
+        "On thin ice|To be in an incredibly precarious, dangerous situation where one totally tiny mistake leads to ruin.|Universal|Walking on a frozen lake where one more step shatters the surface and drowns you.|If you are late to work one more time, you are on incredibly thin ice.",
+        "Read between the lines|To instantly perceive the hidden, secretive truth completely unsaid in a conversation.|Professional|Decrypting an invisible ink message hidden physically between the visible sentences.|She said she was 'fine', but reading between the lines, she was deeply furious.",
+        "Take a rain check|To politely decline an offer right now, but firmly promise to accept it at a later date.|Casual|Baseball issuing physical paper tickets to fans when a game is suddenly rained out.|I can't get dinner tonight, but can I take a rain check for Friday?"
+    ];
+
+    const generateObjects = (arrayStrList, level, color) => {
+        return arrayStrList.map((str, index) => {
+            const parts = str.split('|');
+            return {
+                id: `${level.toLowerCase()[0]}${index}`,
+                phrase: parts[0],
+                meaning: parts[1],
+                level: level,
+                levelColor: color,
+                formality: parts[2],
+                literal: parts[3],
+                origin: parts[3].length > 35 ? parts[3] : "This phrase has evolved over centuries of native use to its current meaning.",
+                example: parts[4],
+                situations: [
+                    "General conversation setting.",
+                    "Applying the core concept to a relevant scenario.",
+                    `Any time you want to express the idea of: ${parts[1].toLowerCase()}`
+                ],
+                synonyms: ["Similar expression", "Another equivalent"], 
+                pronunciation: parts[0].replace(/[a-zA-Z]+/g, m => m + "-uh").slice(0, 15) + "...", // Placeholder visual
+                commonMistake: { 
+                    wrong: `Misusing ${parts[0].split(' ')[0]} with wrong grammar.`, 
+                    right: parts[0], 
+                    why: "Native idioms rely on exact, fixed word order and vocabulary." 
+                },
+                practice: { 
+                    text: `Which context strictly requires the phrase "${parts[0]}"?`, 
+                    options: [ parts[1], "When jumping on a bed", "During an underwater swim" ], 
+                    answer: parts[1] 
+                },
+                task: `Challenge yourself: Try finding a way to sneak "${parts[0]}" into your next text message!`
+            };
+        });
+    };
+
+    return [
+        {
+            title: "Beginner Essentials (50 Phrases)",
+            items: generateObjects(beginnerStems, "Beginner", "var(--success)")
+        },
+        {
+            title: "Intermediate Expressions (50 Phrases)",
+            items: generateObjects(intermediateStems, "Intermediate", "var(--warning)")
+        },
+        {
+            title: "Advanced Native Idioms (50 Phrases)",
+            items: generateObjects(advancedStems, "Advanced", "var(--primary)")
+        }
+    ];
+};
