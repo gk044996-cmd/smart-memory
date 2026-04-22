@@ -24,10 +24,12 @@ const Navbar = () => {
             background: "rgba(11, 14, 20, 0.8)",
             backdropFilter: "blur(16px)",
             borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
-            padding: "1rem 2rem",
+            padding: "1rem",
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem"
         }}>
             <Link to="/" style={{ textDecoration: "none" }}>
                 <h2 style={{ margin: 0, fontSize: "1.5rem" }} className="text-gradient">
@@ -35,7 +37,19 @@ const Navbar = () => {
                 </h2>
             </Link>
 
-            <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            <div 
+                className="nav-links-container"
+                style={{ 
+                    display: "flex", 
+                    gap: "0.5rem", 
+                    alignItems: "center",
+                    overflowX: "auto",
+                    width: "100%",
+                    maxWidth: "100vw",
+                    paddingBottom: "0.5rem",
+                    WebkitOverflowScrolling: "touch"
+                }}
+            >
                 {navLinks.map((link) => {
                     const isActive = location.pathname === link.path;
                     return (
@@ -53,7 +67,8 @@ const Navbar = () => {
                                 borderRadius: "8px",
                                 fontSize: "0.95rem",
                                 background: isActive ? "rgba(255,255,255,0.05)" : "transparent",
-                                transition: "all 0.2s ease"
+                                transition: "all 0.2s ease",
+                                whiteSpace: "nowrap"
                             }}
                             onMouseEnter={(e) => {
                                 if(!isActive) e.currentTarget.style.color = "white";
